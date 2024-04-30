@@ -53,7 +53,7 @@ class Bot {
         return {
             fromTerritoryIndex: territories.findIndex(t => t === attackingTerritory),
             toTerritoryIndex: targetIndex,
-            troops: Math.min(attackingTerritory.numberOfTroops - 1, Math.floor(Math.random() * attackingTerritory.numberOfTroops)) // Attack with up to all available troops, but keep 1 behind
+            troops: Math.min(territories[targetIndex].numberOfTroops, Math.min(attackingTerritory.numberOfTroops - 1, Math.floor(Math.random() * attackingTerritory.numberOfTroops))) // Attack with up to all available troops, but keep 1 behind
         };
     }
 

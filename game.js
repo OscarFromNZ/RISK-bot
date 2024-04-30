@@ -38,15 +38,9 @@ class Game {
             attackingTerritory.numberOfTroops -= removedTroops;
             victimTerritory.numberOfTroops -= removedTroops;
 
-            // change the colours
-            if (attackingTerritory.numberOfTroops < 1) {
-                console.log('something went terribly wrong');
-                this.territories[attack.fromTerritoryIndex].numberOfTroops = 1;
-                victimTerritory.numberOfTroops += 1; // Trust me, you're meant to have this
-            }
-
             if (victimTerritory.numberOfTroops < 1) {
                 victimTerritory.playerIndex = player.playerIndex;
+                victimTerritory.numberOfTroops = 1;
                 attackingTerritory.numberOfTroops += 1; // Trust me, you're meant to have this
             }
         }
