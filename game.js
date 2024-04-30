@@ -32,10 +32,7 @@ class Game {
 
         if (attack) {
             console.log(`Player ${player.playerIndex} attacks from territory ${attack.fromTerritoryIndex} with ${this.territories[attack.fromTerritoryIndex].numberOfTroops} troops on it to territory ${attack.toTerritoryIndex} with ${attack.troops} troops.`);
-            // for now let's say no luck just pure minus signs on each side
-            let removedTroops = attackingTerritory.numberOfTroops - victimTerritory.numberOfTroops;
-            // since you can hit things that are bigger than you
-            if (removedTroops < 1) removedTroops === attackingTerritory.numberOfTroops;
+            let removedTroops = attack.troops;
 
             // change the numbers
             attackingTerritory.numberOfTroops -= removedTroops;
@@ -45,10 +42,12 @@ class Game {
             if (attackingTerritory.numberOfTroops < 1) {
                 console.log('something went terribly wrong');
                 this.territories[attack.fromTerritoryIndex].numberOfTroops = 1;
+                victimTerritory.numberOfTroops += 1; // Trust me, you're meant to have this
             }
 
             if (victimTerritory.numberOfTroops < 1) {
                 victimTerritory.playerIndex = player.playerIndex;
+                attackingTerritory.numberOfTroops += 1; // Trust me, you're meant to have this
             }
         }
     
